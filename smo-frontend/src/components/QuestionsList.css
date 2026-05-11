@@ -1,0 +1,138 @@
+.questions-container {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.questions-container h2 {
+  margin-bottom: 2rem;
+  font-size: 1.8rem;
+  color: #1f2937;
+}
+
+.questions-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.question-card {
+  display: flex;
+  gap: 1.5rem;
+  padding: 1.5rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  background: #fff;
+  transition: all 0.2s ease;
+}
+
+.question-card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-color: #d1d5db;
+}
+
+.question-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  min-width: 80px;
+  text-align: center;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.stat-value {
+  font-weight: 600;
+  font-size: 1.25rem;
+  color: #1f2937;
+}
+
+.stat-label {
+  font-size: 0.75rem;
+  color: #6b7280;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.stat.status .stat-value {
+  font-size: 1.5rem;
+}
+
+.stat.status.solved .stat-value {
+  color: #10b981;
+}
+
+.stat.status.unanswered .stat-value {
+  color: #f59e0b;
+}
+
+.question-content {
+  flex: 1;
+}
+
+.question-title {
+  margin: 0 0 1rem 0;
+  font-size: 1.1rem;
+  color: #0066cc;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.question-title:hover {
+  color: #0052a3;
+  text-decoration: underline;
+}
+
+.question-tags {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+
+.tag {
+  display: inline-block;
+  padding: 0.35rem 0.75rem;
+  background: #e0f2fe;
+  color: #0369a1;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.question-meta {
+  display: flex;
+  gap: 1.5rem;
+  font-size: 0.9rem;
+  color: #6b7280;
+}
+
+.author strong {
+  color: #1f2937;
+}
+
+@media (max-width: 640px) {
+  .questions-container {
+    padding: 1rem;
+  }
+
+  .question-card {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .question-stats {
+    flex-direction: row;
+    min-width: auto;
+    gap: 1.5rem;
+  }
+
+  .question-meta {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}
