@@ -1,7 +1,7 @@
 .home-page {
   min-height: 100vh;
-  background: #f8fafc;
-  color: #1f2937;
+  background: var(--bg-tertiary);
+  color: var(--text-primary);
 }
 
 .home-navbar {
@@ -9,10 +9,11 @@
   align-items: center;
   justify-content: space-between;
   padding: 1rem 2rem;
-  max-width: 1200px;
+  max-width: 100%;
   margin: 0 auto;
-  background: white;
-  border-bottom: 1px solid #e5e7eb;
+  background: var(--bg-primary);
+  border-bottom: 1px solid var(--border-light);
+  box-shadow: var(--shadow-sm);
 }
 
 .navbar-brand {
@@ -20,65 +21,84 @@
   align-items: center;
   gap: 0.75rem;
   text-decoration: none;
-  color: #111827;
+  color: var(--text-primary);
   font-weight: 700;
-  font-size: 1.05rem;
+  font-size: 1.125rem;
+  transition: opacity 0.2s ease;
+}
+
+.navbar-brand:hover {
+  opacity: 0.8;
 }
 
 .navbar-logo {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 32px;
-  height: 32px;
-  border-radius: 999px;
-  background: #6366f1;
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
   color: white;
   font-weight: 700;
+  font-size: 1.25rem;
 }
 
 .navbar-links {
   display: inline-flex;
-  gap: 1rem;
+  gap: 1.5rem;
   align-items: center;
 }
 
-.navbar-links a {
+.navbar-links a,
+.navbar-links button {
   text-decoration: none;
-  color: #374151;
-  font-weight: 600;
+  color: var(--text-secondary);
+  font-weight: 500;
+  border: none;
+  background: none;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.navbar-links a:hover,
+.navbar-links button:hover {
+  color: var(--primary);
 }
 
 .signup-link {
-  padding: 0.55rem 1rem;
-  background: #4f46e5;
+  padding: 0.6rem 1.25rem;
+  background: var(--primary);
   color: white;
-  border-radius: 999px;
+  border-radius: 8px;
+  transition: all 0.2s ease;
 }
 
-.tag-pill-section {
-  padding: 3rem 2rem 1.5rem;
+.signup-link:hover {
+  background: var(--primary-dark);
+  box-shadow: var(--shadow-md);
+}
+
+.navbar-user {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.page-header {
+  padding: 2rem 2rem 0;
   max-width: 1200px;
   margin: 0 auto;
-  text-align: center;
 }
 
-.tag-pill-section h1 {
-  margin: 0 0 1.5rem;
+.page-header h1 {
   font-size: 2.25rem;
-}
-
-.tag-pill-list {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 0.75rem;
-  margin: 0 auto;
-  max-width: 720px;
+  margin: 0 0 1.5rem 0;
 }
 
 .questions-area {
-  padding: 2rem 1rem 4rem;
+  padding: 2rem 2rem 4rem;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 @media (max-width: 640px) {
@@ -86,11 +106,21 @@
     flex-direction: column;
     align-items: flex-start;
     gap: 1rem;
+    padding: 1rem;
   }
 
   .navbar-links {
     width: 100%;
     justify-content: flex-start;
     flex-wrap: wrap;
+    gap: 1rem;
+  }
+  
+  .page-header {
+    padding: 1.5rem 1rem 0;
+  }
+  
+  .questions-area {
+    padding: 1.5rem 1rem 2rem;
   }
 }

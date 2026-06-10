@@ -1,16 +1,27 @@
 import { useState } from 'react'
 import type { FormEvent } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import { useAuth } from '../hooks/useAuth'
 import './Auth.css'
 
 export function SignIn() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [message, setMessage] = useState('')
+  const { signIn } = useAuth()
+  const navigate = useNavigate()
 
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
-    setMessage(`Signed in as ${email} (mock)`)
+
+    const result = await signIn(email, password)
+
+    if (!result.success) {
+      setMessage(result.error?.message ?? 'Unable to sign in')
+      return
+    }
+
+    navigate('/')
   }
 
   return (
@@ -24,6 +35,7 @@ export function SignIn() {
 
       <div className="auth-card">
         <h1>Sign In</h1>
+
         <form className="auth-form" onSubmit={handleSubmit}>
           <label>
             Email

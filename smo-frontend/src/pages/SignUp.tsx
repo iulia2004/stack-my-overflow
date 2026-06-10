@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import type { FormEvent } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import { useAuth } from '../hooks/useAuth'
 import './Auth.css'
 
 export function SignUp() {
@@ -8,10 +9,20 @@ export function SignUp() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [message, setMessage] = useState('')
+  const { signUp } = useAuth()
+  const navigate = useNavigate()
 
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
-    setMessage(`Account created for ${name || email} (mock)`)
+
+    const result = await signUp(name, email, password)
+
+    if (!result.success) {
+      setMessage(result.error?.message ?? 'Unable to create account')
+      return
+    }
+
+    navigate('/')
   }
 
   return (
@@ -25,6 +36,7 @@ export function SignUp() {
 
       <div className="auth-card">
         <h1>Sign Up</h1>
+
         <form className="auth-form" onSubmit={handleSubmit}>
           <label>
             Name
